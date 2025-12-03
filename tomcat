@@ -1,0 +1,13 @@
+---
+- hosts: all
+  connection: ssh
+
+  tasks:
+    - name: copy the script
+      copy:
+        src: /root/tomcat.sh
+        dest: /root
+        mode: 777
+
+    - name: run the script
+      shell: nohup /root/tomcat.sh
