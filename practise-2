@@ -1,0 +1,17 @@
+---
+- hosts: all
+  connection: ssh
+
+  tasks:
+    - name: install git on server
+      yum: name=git state=present
+
+    - name: install build tool
+      yum: name=maven state=present
+      tags: buildtool
+
+    - name: install java
+      yum: name=java-17-amazon-corretto state=present
+
+    - name: install httpd
+      yum: name=httpd state=present
