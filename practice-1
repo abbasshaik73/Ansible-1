@@ -1,0 +1,22 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: Install web server
+      yum: name=httpd state=present
+
+    - name: Start the web server
+      service: name=httpd state=started
+
+    - name: Create an index filr
+      file: path=/var/www/html/index.html state=touch
+
+    - name: add some data in index file
+      copy:
+        dest: /var/www/html/index.html
+        content:
+          <h1>This is Ansible file page</h1>
+          <h2>Ansible data added here by me</h2>
+
+...
